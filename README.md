@@ -6,6 +6,13 @@ KrishiBhoomi AI is a premium, production-quality AI-powered agricultural intelli
 
 ---
 
+## 📖 Key Reference Documents
+- **🛠️ [Local Setup & Working Principles Guide](file:///c:/Users/babin/Desktop/BWAI/INSTRUCTIONS.md)**: Steps to launch the FastAPI backend, DB triggers, and Next.js frontend pages.
+- **🗺️ [System Architecture & Flow Mapper](file:///c:/Users/babin/Desktop/BWAI/ARCHITECTURE.md)**: Visual sequence graphs and Mermaid high-level stack diagrams.
+- **📄 [MIT License](file:///c:/Users/babin/Desktop/BWAI/LICENSE)**: Standard open distribution permissions guidelines.
+
+---
+
 ## 🌟 Key Features & AI Modules
 
 1. **Smart Crop Recommendation (Module 1) 🌾**: XGBoost classification recommendation engine evaluating 12+ soil (NPK, pH), water table, and climate parameters to optimize crop returns.
