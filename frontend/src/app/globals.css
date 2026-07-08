@@ -158,53 +158,77 @@
    ============================================ */
 
 :root {
+  /* Backgrounds */
   --background: 0 0% 99%;
   --foreground: 142 20% 10%;
   --card: 0 0% 100%;
   --card-foreground: 142 20% 10%;
   --popover: 0 0% 100%;
   --popover-foreground: 142 20% 10%;
+  
+  /* Brand */
   --primary: 142 71% 45%;
   --primary-foreground: 0 0% 100%;
   --secondary: 142 20% 96%;
   --secondary-foreground: 142 20% 10%;
+  
+  /* Neutral */
   --muted: 142 10% 96%;
   --muted-foreground: 142 10% 45%;
   --accent: 142 30% 93%;
   --accent-foreground: 142 20% 10%;
+  
+  /* Borders */
   --border: 142 10% 90%;
   --input: 142 10% 90%;
   --ring: 142 71% 45%;
+  
+  /* Status */
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
+  
+  /* Radius */
   --radius: 0.625rem;
+
+  /* Surfaces */
   --surface-1: rgba(255, 255, 255, 0.7);
   --surface-2: rgba(255, 255, 255, 0.5);
   --surface-3: rgba(255, 255, 255, 0.3);
-  --glass-border: rgba(255, 255, 255, 0.3);
+  --glass-border: rgba(0, 0, 0, 0.08);
   --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
 }
 
 .dark {
+  /* Backgrounds */
   --background: 142 20% 5%;
   --foreground: 142 10% 95%;
   --card: 142 15% 8%;
   --card-foreground: 142 10% 95%;
   --popover: 142 15% 8%;
   --popover-foreground: 142 10% 95%;
+  
+  /* Brand */
   --primary: 142 71% 45%;
   --primary-foreground: 0 0% 100%;
   --secondary: 142 15% 15%;
   --secondary-foreground: 142 10% 95%;
+  
+  /* Neutral */
   --muted: 142 10% 15%;
   --muted-foreground: 142 10% 55%;
   --accent: 142 15% 12%;
   --accent-foreground: 142 10% 95%;
+  
+  /* Borders */
   --border: 142 10% 18%;
   --input: 142 10% 18%;
   --ring: 142 71% 45%;
+  
+  /* Status */
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
+
+  /* Surfaces */
   --surface-1: rgba(20, 30, 22, 0.8);
   --surface-2: rgba(20, 30, 22, 0.6);
   --surface-3: rgba(20, 30, 22, 0.4);

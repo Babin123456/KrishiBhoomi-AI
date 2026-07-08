@@ -92,7 +92,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1]"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground dark:text-white leading-[1.1]"
           >
             One Intelligent Platform
             <br />
@@ -104,7 +104,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="mt-6 text-lg sm:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed"
+            className="mt-6 text-lg sm:text-xl text-muted-foreground dark:text-white/60 max-w-2xl mx-auto leading-relaxed"
           >
             Empowering farmers with AI-driven crop recommendations, real-time weather intelligence,
             disease detection, satellite monitoring, and market analytics — all in one platform.
@@ -127,7 +127,7 @@ export function HeroSection() {
             </Link>
             <Link
               href="#features"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-white/90 rounded-2xl glass hover:bg-white/10 transition-all duration-300"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-foreground dark:text-white/90 rounded-2xl glass hover:bg-muted/50 transition-all duration-300"
             >
               Explore Features
             </Link>
@@ -145,14 +145,14 @@ export function HeroSection() {
                 key={stat.label}
                 className="glass rounded-2xl p-5 text-center hover:scale-[1.05] transition-transform duration-300"
               >
-                <div className="text-2xl sm:text-3xl font-bold text-white">
+                <div className="text-2xl sm:text-3xl font-bold text-foreground dark:text-white">
                   <AnimatedCounter
                     end={stat.value}
                     suffix={stat.suffix}
                     duration={2000 + i * 200}
                   />
                 </div>
-                <div className="mt-1.5 text-xs sm:text-sm text-white/50 font-medium">
+                <div className="mt-1.5 text-xs sm:text-sm text-muted-foreground dark:text-white/50 font-medium">
                   {stat.label}
                 </div>
               </div>

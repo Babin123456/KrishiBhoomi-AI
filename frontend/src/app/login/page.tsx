@@ -84,18 +84,26 @@ export default function LoginPage() {
           transition={{ duration: 0.6 }}
           className="w-full max-w-md"
         >
-          {/* Mobile logo */}
-          <div className="lg:hidden flex items-center gap-2.5 mb-8">
-            <div className="w-9 h-9 rounded-xl gradient-primary flex items-center justify-center">
-              <Sprout className="w-5 h-5 text-white" />
+          {/* Mobile logo & Go Home Option */}
+          <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center gap-2.5">
+              <div className="w-9 h-9 rounded-xl gradient-primary flex items-center justify-center">
+                <Sprout className="w-5 h-5 text-white" />
+              </div>
+              <span className="text-lg font-bold tracking-tight text-foreground">
+                Krishi<span className="gradient-text">Bhoomi</span>
+              </span>
             </div>
-            <span className="text-lg font-bold tracking-tight text-foreground">
-              Krishi<span className="gradient-text">Bhoomi</span>
-            </span>
+            <Link
+              href="/"
+              className="text-xs font-semibold text-muted-foreground hover:text-foreground px-3 py-1.5 rounded-lg border border-border hover:bg-muted/50 transition-all"
+            >
+              Go to Home
+            </Link>
           </div>
 
           <h2 className="text-2xl font-bold text-foreground mb-2">Welcome back</h2>
-          <p className="text-muted-foreground mb-8">Sign in to access your farm dashboard</p>
+          <p className="text-muted-foreground mb-8 font-medium">Sign in to access your farm dashboard</p>
 
           {/* Role Selector */}
           <div className="grid grid-cols-3 gap-2 mb-8">
