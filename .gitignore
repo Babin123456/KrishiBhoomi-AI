@@ -1,0 +1,53 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+
+# Build
+.next/
+out/
+dist/
+build/
+*.egg-info/
+
+# Environment
+.env
+.env.local
+.env.production
+.env.development
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# AI Models (too large for git)
+ai/models/*.pkl
+ai/models/*.h5
+ai/models/*.pt
+ai/models/*.onnx
+ai/models/*.bin
+
+# Database
+*.db
+*.sqlite3
+
+# Docker
+docker/data/
+
+# Coverage
+coverage/
+htmlcov/
+.coverage

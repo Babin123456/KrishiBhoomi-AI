@@ -1,0 +1,14 @@
+export { Navbar } from "./navbar";
+export { HeroSection } from "./hero-section";
+export { ProblemSection } from "./problem-section";
+export { SolutionSection } from "./solution-section";
+export { AIWorkflowSection } from "./ai-workflow-section";
+export { FeaturesSection } from "./features-section";
+export { DashboardPreviewSection } from "./dashboard-preview-section";
+export { ComparisonSection } from "./comparison-section";
+export { TechStackSection } from "./tech-stack-section";
+export { FutureVisionSection } from "./future-vision-section";
+export { TestimonialsSection } from "./testimonials-section";
+export { FAQSection } from "./faq-section";
+export { CTASection } from "./cta-section";
+export { Footer } from "./footer";
