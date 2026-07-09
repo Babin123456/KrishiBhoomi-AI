@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   CloudSun,
@@ -60,6 +61,30 @@ const recentActivities = [
 const weeklyHealth = [65, 72, 68, 78, 82, 87, 85];
 
 export default function FarmerDashboard() {
+  const [userState, setUserState] = useState("Uttar Pradesh");
+  const [userDistrict, setUserDistrict] = useState("Lucknow");
+  const [userName, setUserName] = useState("Rajesh");
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setUserState(localStorage.getItem("userState") || "Uttar Pradesh");
+      setUserDistrict(localStorage.getItem("userDistrict") || "Lucknow");
+      setUserName(localStorage.getItem("userName") || "Rajesh");
+    }
+  }, []);
+
+  // Generate a mock but state-dependent weekly trend calculation to feel realistic
+  const stateSeed = userState.charCodeAt(0) + userState.length;
+  const stateWeeklyHealth = [
+    60 + (stateSeed % 15),
+    65 + (stateSeed % 12),
+    62 + (stateSeed % 18),
+    70 + (stateSeed % 10),
+    75 + (stateSeed % 14),
+    80 + (stateSeed % 9),
+    78 + (stateSeed % 11)
+  ];
+
   return (
     <div className="space-y-6">
       {/* Welcome Header */}
@@ -70,11 +95,11 @@ export default function FarmerDashboard() {
             animate={{ opacity: 1, y: 0 }}
             className="text-2xl font-bold text-foreground"
           >
-            Good Evening, Rajesh
+            Good Evening, {userName}
           </motion.h1>
           <p className="text-sm text-muted-foreground flex items-center gap-1.5 mt-1">
             <MapPin className="w-3.5 h-3.5" />
-            Lucknow, Uttar Pradesh
+            {userDistrict}, {userState}
             <span className="mx-1.5 text-border">|</span>
             <Calendar className="w-3.5 h-3.5" />
             {new Date().toLocaleDateString("en-IN", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}
@@ -216,28 +241,25 @@ export default function FarmerDashboard() {
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
               <Activity className="w-5 h-5 text-krishi-500" />
-              <h3 className="font-semibold text-foreground text-sm">Weekly Crop Health</h3>
+              <h3 className="font-semibold text-foreground text-sm">Weekly Crop Health Trend</h3>
             </div>
             <span className="text-xs text-muted-foreground">Last 7 days</span>
           </div>
-          <div className="flex items-end gap-2 h-36">
-            {weeklyHealth.map((val, i) => (
-              <motion.div
+          <div className="flex items-end gap-2 h-44 pb-6 pt-4">
+            {stateWeeklyHealth.map((val, i) => (
+              <div
                 key={i}
-                className="flex-1 flex flex-col items-center gap-1.5"
-                initial={{ height: 0 }}
-                animate={{ height: "auto" }}
-                transition={{ delay: i * 0.1 }}
+                className="flex-1 flex flex-col justify-end items-center gap-1.5 h-full"
               >
                 <span className="text-[10px] text-muted-foreground font-medium">{val}%</span>
                 <div
                   className="w-full rounded-t-lg bg-gradient-to-t from-krishi-600 to-krishi-400 transition-all duration-700 ease-out"
                   style={{ height: `${val}%` }}
                 />
-                <span className="text-[10px] text-muted-foreground">
+                <span className="text-[10px] text-muted-foreground mt-1">
                   {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"][i]}
                 </span>
-              </motion.div>
+              </div>
             ))}
           </div>
         </GlassCard>
