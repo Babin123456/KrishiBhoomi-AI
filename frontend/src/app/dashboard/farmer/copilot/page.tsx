@@ -6,11 +6,9 @@ import {
   MessageSquare,
   Send,
   Mic,
-  Zap,
   User,
   Sprout,
   BookOpen,
-  Loader2,
   Sparkles,
 } from "lucide-react";
 import { GlassCard } from "@/components/shared";
@@ -56,11 +54,14 @@ export default function CopilotPage() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
+  const msgCounterRef = useRef(2);
+
   const sendMessage = async (text: string) => {
     if (!text.trim()) return;
 
+    const userMsgId = `msg-user-${msgCounterRef.current++}`;
     const userMessage: Message = {
-      id: Math.random().toString(36).substring(7),
+      id: userMsgId,
       role: "user",
       content: text.trim(),
       timestamp: new Date(),
@@ -73,8 +74,9 @@ export default function CopilotPage() {
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
     const response = mockResponses.default;
+    const assistantMsgId = `msg-assistant-${msgCounterRef.current++}`;
     const assistantMessage: Message = {
-      id: Math.random().toString(36).substring(7),
+      id: assistantMsgId,
       role: "assistant",
       content: response.content,
       sources: response.sources,

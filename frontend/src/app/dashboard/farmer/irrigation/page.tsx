@@ -1,12 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
 import {
   Droplets,
-  Zap,
-  Info,
-  Calendar,
   Sparkles,
   TrendingUp,
   Clock,
@@ -15,13 +10,9 @@ import {
 } from "lucide-react";
 import { GlassCard } from "@/components/shared";
 
-const moistureGauge = {
-  value: 42,
-  min: 0,
-  max: 100,
-  targetMin: 50,
-  targetMax: 70,
-};
+
+const moistureValue = 42;
+
 
 const timelineData = [
   { time: "Monday 6:00 AM", amount: "12,000 Litres", status: "completed", method: "Drip Irrigation" },
@@ -31,7 +22,7 @@ const timelineData = [
 ];
 
 export default function IrrigationPage() {
-  const [moisture, setMoisture] = useState(42);
+  const moisture = moistureValue;
 
   return (
     <div className="max-w-6xl mx-auto space-y-6">
