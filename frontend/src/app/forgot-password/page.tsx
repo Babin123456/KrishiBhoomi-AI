@@ -41,13 +41,21 @@ export default function ForgotPasswordPage() {
         transition={{ duration: 0.5 }}
         className="w-full max-w-md relative z-10"
       >
-        <div className="flex items-center gap-2.5 justify-center mb-8">
-          <div className="w-9 h-9 rounded-xl gradient-primary flex items-center justify-center">
-            <Sprout className="w-5 h-5 text-white" />
+        <div className="flex items-center justify-between mb-8">
+          <div className="flex items-center gap-2.5">
+            <div className="w-9 h-9 rounded-xl gradient-primary flex items-center justify-center">
+              <Sprout className="w-5 h-5 text-white" />
+            </div>
+            <span className="text-lg font-bold tracking-tight text-foreground">
+              Krishi<span className="gradient-text">Bhoomi</span>
+            </span>
           </div>
-          <span className="text-lg font-bold tracking-tight text-foreground">
-            Krishi<span className="gradient-text">Bhoomi</span>
-          </span>
+          <Link
+            href="/"
+            className="text-xs font-semibold text-muted-foreground hover:text-foreground px-3 py-1.5 rounded-lg border border-border hover:bg-muted/50 transition-all"
+          >
+            Go to Home
+          </Link>
         </div>
 
         <GlassCard className="p-8">
