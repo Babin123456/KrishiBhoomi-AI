@@ -48,6 +48,11 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
   },
+  icons: {
+    icon: "/KB-AI.png",
+    shortcut: "/KB-AI.png",
+    apple: "/KB-AI.png",
+  },
 };
 
 export const viewport: Viewport = {
