@@ -12,3 +12,4 @@ export { TestimonialsSection } from "./testimonials-section";
 export { FAQSection } from "./faq-section";
 export { CTASection } from "./cta-section";
 export { Footer } from "./footer";
+export { TeamSection } from "./team-section";

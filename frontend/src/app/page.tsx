@@ -13,6 +13,7 @@ import {
   FAQSection,
   CTASection,
   Footer,
+  TeamSection,
 } from "@/components/landing";
 
 export default function LandingPage() {
@@ -30,6 +31,7 @@ export default function LandingPage() {
       <FutureVisionSection />
       <TestimonialsSection />
       <FAQSection />
+      <TeamSection />
       <CTASection />
       <Footer />
     </main>
