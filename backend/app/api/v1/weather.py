@@ -3,10 +3,17 @@ from app.schemas.schemas import WeatherRecommendationResponse, WeatherAlertRespo
 from app.core.dependencies import get_current_user
 from app.models.models import User
 
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from app.core.security import decode_token
+from typing import Optional
+
 router = APIRouter(prefix="/weather", tags=["Weather Intelligence"])
+security_scheme = HTTPBearer(auto_error=False)
 
 @router.get("/recommendations", response_model=WeatherRecommendationResponse)
-async def get_weather_recommendations(current_user: User = Depends(get_current_user)):
+async def get_weather_recommendations(
+    token: Optional[HTTPAuthorizationCredentials] = Depends(security_scheme)
+):
     alerts = [
         WeatherAlertResponse(
             type="warning",

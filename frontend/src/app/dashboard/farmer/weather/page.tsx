@@ -46,6 +46,19 @@ const advisories = [
 export default function WeatherPage() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_activeTab, _setActiveTab] = useState<"hourly" | "weekly">("weekly");
+  
+  const [userState] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem("userState") || "Uttar Pradesh";
+    }
+    return "Uttar Pradesh";
+  });
+  const [userDistrict] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem("userDistrict") || "Lucknow";
+    }
+    return "Lucknow";
+  });
 
   return (
     <div className="max-w-6xl mx-auto space-y-6">
@@ -69,7 +82,7 @@ export default function WeatherPage() {
                 CURRENT WEATHER
               </span>
               <h2 className="text-5xl font-extrabold text-foreground mt-4">32°C</h2>
-              <p className="text-sm text-muted-foreground mt-1">Partly Cloudy — Lucknow</p>
+              <p className="text-sm text-muted-foreground mt-1">Partly Cloudy — {userDistrict}, {userState}</p>
             </div>
 
             <div className="grid grid-cols-2 gap-3 pt-4 border-t border-border/50">

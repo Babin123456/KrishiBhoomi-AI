@@ -34,19 +34,58 @@ export default function LoginPage() {
     e.preventDefault();
     setIsLoading(true);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/api/v1/auth/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
 
-    // Navigate to appropriate dashboard
-    if (selectedRole === "farmer") {
-      router.push("/dashboard/farmer");
-    } else if (selectedRole === "officer") {
-      router.push("/dashboard/district");
-    } else {
-      router.push("/dashboard/farmer");
+      if (!response.ok) {
+        const errData = await response.json();
+        throw new Error(errData.detail || "Authentication failed");
+      }
+
+      const data = await response.json();
+      localStorage.setItem("token", data.access_token);
+      localStorage.setItem("userName", data.user.name);
+      localStorage.setItem("userRole", data.user.role);
+      localStorage.setItem("userLanguage", data.user.language || "English");
+      
+      // Default initial farm details, will be populated on registration too
+      localStorage.setItem("userState", data.user.state || "Uttar Pradesh");
+      localStorage.setItem("userDistrict", data.user.district || "Lucknow");
+
+      if (data.user.role === "officer") {
+        router.push("/dashboard/district");
+      } else {
+        router.push("/dashboard/farmer");
+      }
+    } catch (err: any) {
+      console.error(err);
+      // Fallback for offline demo accounts
+      if (email === "farmer@demo.com" && password === "demo123") {
+        localStorage.setItem("token", "mock-farmer-token");
+        localStorage.setItem("userName", "Rajesh Kumar");
+        localStorage.setItem("userRole", "farmer");
+        localStorage.setItem("userState", "Uttar Pradesh");
+        localStorage.setItem("userDistrict", "Lucknow");
+        localStorage.setItem("userLanguage", "English");
+        router.push("/dashboard/farmer");
+      } else if (email === "officer@demo.com" && password === "demo123") {
+        localStorage.setItem("token", "mock-officer-token");
+        localStorage.setItem("userName", "Officer Amit");
+        localStorage.setItem("userRole", "officer");
+        localStorage.setItem("userState", "Uttar Pradesh");
+        localStorage.setItem("userDistrict", "Lucknow");
+        localStorage.setItem("userLanguage", "English");
+        router.push("/dashboard/district");
+      } else {
+        alert(err.message || "Invalid email or password");
+      }
+    } finally {
+      setIsLoading(false);
     }
-
-    setIsLoading(false);
   };
 
   return (

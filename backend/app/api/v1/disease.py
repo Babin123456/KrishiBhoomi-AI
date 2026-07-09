@@ -1,16 +1,28 @@
 from fastapi import APIRouter, Depends, UploadFile, File
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from app.schemas.schemas import DiseaseResponse
 from app.core.dependencies import get_current_user
 from app.models.models import User
+from typing import Optional
 import random
 
+from app.core.security import decode_token
+
 router = APIRouter(prefix="/disease", tags=["Disease Detection"])
+security_scheme = HTTPBearer(auto_error=False)
 
 @router.post("/detect", response_model=DiseaseResponse)
 async def detect_disease(
     file: UploadFile = File(...),
-    current_user: User = Depends(get_current_user)
+    token: Optional[HTTPAuthorizationCredentials] = Depends(security_scheme)
 ):
+    # Retrieve user or optional info if token exists
+    current_user = None
+    if token:
+        payload = decode_token(token.credentials)
+        if payload:
+            # Token decoded successfully
+            pass
     # Simulated EfficientNet-B0 fine-tuned classifier response enhanced with Gemini explainability
     filename_lower = file.filename.lower()
     

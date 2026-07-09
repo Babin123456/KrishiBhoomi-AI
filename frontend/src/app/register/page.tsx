@@ -63,9 +63,46 @@ export default function RegisterPage() {
     }
 
     setIsLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    router.push("/dashboard/farmer");
-    setIsLoading(false);
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/api/v1/auth/register`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          password: formData.password,
+          role: "farmer",
+          language: formData.language
+        }),
+      });
+
+      if (!response.ok) {
+        const errData = await response.json();
+        throw new Error(errData.detail || "Registration failed");
+      }
+
+      const data = await response.json();
+      localStorage.setItem("token", data.access_token);
+      localStorage.setItem("userName", data.user.name);
+      localStorage.setItem("userRole", data.user.role);
+      localStorage.setItem("userLanguage", data.user.language || "English");
+
+      // Extract location data details
+      const locParts = formData.location.split(",").map(p => p.trim());
+      const district = locParts[1] || locParts[0] || "Lucknow";
+      const state = locParts[2] || locParts[1] || "Uttar Pradesh";
+      
+      localStorage.setItem("userDistrict", district);
+      localStorage.setItem("userState", state);
+
+      router.push("/dashboard/farmer");
+    } catch (err: any) {
+      console.error(err);
+      alert(err.message || "Registration failed");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
