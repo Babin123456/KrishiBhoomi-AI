@@ -139,12 +139,18 @@ docker-compose up --build
 
 Create a `.env` file in the root directory (or individual `.env` files under `frontend` and `backend` directories) using the configuration values below.
 
-### 🔑 How to acquire credentials:
+### How to acquire credentials
+
 1. **`DATABASE_URL` (PostgreSQL / SQLite)**: For local testing, you can use SQLite by setting `DATABASE_URL=sqlite+aiosqlite:///./krishibhoomi.db` (does not require external setup). For production, spin up a local PostgreSQL server, or sign up for a cloud-hosted PostgreSQL instance via platforms like **Supabase**, **Neon**, or **Railway** to obtain your connection URI (replace prefix with `postgresql+asyncpg://...`).
+
 2. **`GEMINI_API_KEY` (AI Copilot)**: Head to [Google AI Studio](https://aistudio.google.com/), sign in, click **Get API Key**, and generate a free API key.
+
 3. **`OPENWEATHER_API_KEY` (Weather)**: Register a free account on [OpenWeatherMap](https://openweathermap.org/api) and generate an API key on your profile dashboard.
+
 4. **`REDIS_URL` (Cache)**: Set up Redis locally, or obtain a cloud endpoint from **Upstash** or **Redis Labs**. If you don't use caching, setting `REDIS_URL` is optional as the app defaults to in-memory caching.
+
 5. **`SECRET_KEY` & `JWT_SECRET`**: You can generate these credentials yourself. Run the following python command in your terminal to generate a secure random secret key:
+
    ```bash
    python -c "import secrets; print(secrets.token_hex(32))"
    ```
@@ -191,24 +197,32 @@ CORS_ORIGINS=http://localhost:3000,http://localhost:3001
 Vercel natively supports Next.js alongside Python serverless functions, enabling both the frontend and FastAPI backend to be deployed under the same repository mapping:
 
 ### 1. Vercel Configuration Mapping
+
 The root [`vercel.json`](vercel.json) file handles routing and service separation.
 - Requests matching `/api/backend/*` route directly to the serverless Python backend service directory.
 - All other routes resolve to the Next.js frontend application.
 
 ### 2. Deployment Steps
+
 1. Push the entire workspace repository to your GitHub account:
+
    ```bash
    git add .
    git commit -m "prepping vercel monorepo"
    git push origin main
    ```
+
 2. Navigate to your [Vercel Dashboard](https://vercel.com/dashboard) and click **Add New Project**.
+
 3. Select your `KrishiBhoomi-AI` repository.
+
 4. On the configuration page, verify that the project roots are managed dynamically by the `vercel.json` file.
+
 5. In **Build & Development Settings**, configure:
    - **Build Command**: Toggle the **Override** switch and leave the input field **empty**.
    - **Install Command**: Toggle the **Override** switch and leave the input field **empty**.
    - **Output Directory**: Toggle the **Override** switch and leave the input field **empty**.
-6. Expand the **Environment Variables** panel and add the configuration fields listed in the **Environment Configuration** section above.
-7. Click **Deploy**. Vercel will build both services in parallel and host them under a unified domain.
 
+6. Expand the **Environment Variables** panel and add the configuration fields listed in the **Environment Configuration** section above.
+
+7. Click **Deploy**. Vercel will build both services in parallel and host them under a unified domain.
