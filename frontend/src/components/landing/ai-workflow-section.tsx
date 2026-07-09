@@ -15,9 +15,9 @@ import {
   LayoutDashboard,
   Bell,
   FileText,
-  ArrowDown,
 } from "lucide-react";
 import { SectionWrapper, SectionHeader, ScrollReveal } from "@/components/shared";
+
 
 const steps = [
   {

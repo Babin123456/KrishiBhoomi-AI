@@ -7,8 +7,8 @@ import {
   Eye,
   Globe,
   Cloud,
-  Database,
 } from "lucide-react";
+
 import { SectionWrapper, SectionHeader, ScrollReveal, StaggerContainer, StaggerItem, GlassCard } from "@/components/shared";
 
 const categories = [

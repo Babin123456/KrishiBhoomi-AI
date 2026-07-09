@@ -3,7 +3,6 @@
 import {
   Brain,
   CloudSun,
-  Microscope,
   Satellite,
   ArrowRight,
   Sprout,
@@ -12,6 +11,7 @@ import {
   Bug,
 } from "lucide-react";
 import { SectionWrapper, SectionHeader, ScrollReveal, StaggerContainer, StaggerItem, GlassCard } from "@/components/shared";
+
 
 const solutions = [
   {

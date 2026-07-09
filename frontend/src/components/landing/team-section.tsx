@@ -1,8 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Globe, ExternalLink, Mail, Users, Award } from "lucide-react";
+import { Award } from "lucide-react";
 import { SectionWrapper, SectionHeader, ScrollReveal, GlassCard } from "@/components/shared";
+
 
 const teamMembers = [
   {

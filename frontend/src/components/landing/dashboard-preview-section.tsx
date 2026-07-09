@@ -11,8 +11,9 @@ import {
   Wind,
   Gauge,
 } from "lucide-react";
-import { SectionWrapper, SectionHeader, ScrollReveal, GlassCard } from "@/components/shared";
+import { SectionWrapper, SectionHeader, ScrollReveal } from "@/components/shared";
 import { AnimatedCounter } from "@/components/shared/animated-counter";
+
 
 const weatherData = {
   temp: 32,

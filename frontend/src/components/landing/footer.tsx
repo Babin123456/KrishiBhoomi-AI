@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Sprout, Globe, ExternalLink, Send, Mail, Star } from "lucide-react";
+import { Sprout, Star } from "lucide-react";
 
 const footerLinks = {
   Platform: [

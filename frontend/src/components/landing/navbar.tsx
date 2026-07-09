@@ -10,7 +10,6 @@ import {
   ChevronRight,
   Sun,
   Moon,
-  Globe,
   Star,
 } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -30,10 +29,13 @@ export function Navbar() {
   const { theme, setTheme } = useTheme();
 
   useEffect(() => {
-    setMounted(true);
+    const timer = setTimeout(() => setMounted(true), 0);
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   return (

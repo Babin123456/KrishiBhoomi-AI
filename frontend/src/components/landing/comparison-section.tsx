@@ -1,6 +1,7 @@
 "use client";
 
-import { Check, X, ArrowRight } from "lucide-react";
+import { Check, X } from "lucide-react";
+
 import { SectionWrapper, SectionHeader, ScrollReveal, GlassCard } from "@/components/shared";
 
 const comparisons = [
