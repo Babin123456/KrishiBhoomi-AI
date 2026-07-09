@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
+
 import { Sprout, ShieldCheck, ArrowLeft } from "lucide-react";
 import { GlassCard } from "@/components/shared";
 

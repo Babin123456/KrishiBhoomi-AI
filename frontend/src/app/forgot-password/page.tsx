@@ -7,11 +7,11 @@ import {
   Sprout,
   Mail,
   ChevronRight,
-  ShieldAlert,
   ArrowLeft,
   KeyRound,
 } from "lucide-react";
 import { GlassCard } from "@/components/shared";
+
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("");

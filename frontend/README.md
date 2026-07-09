@@ -21,7 +21,9 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to view the 
 ---
 
 ## 📂 Folder Structure & File Mapping
+
 - **`src/app/`**: Next.js App Router folders and layouts.
+
   - **`page.tsx`**: Main landing page combining all product overview sections.
   - **`login/page.tsx`** & **`register/page.tsx`**: Auth portal views.
   - **`dashboard/farmer/`**: Soil metrics, crop health, weather, disease scanners, and voice assistants.

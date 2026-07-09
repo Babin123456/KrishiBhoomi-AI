@@ -11,10 +11,10 @@ import {
   Eye,
   EyeOff,
   ChevronRight,
-  User,
   Shield,
   Building2,
 } from "lucide-react";
+
 
 const roles = [
   { id: "farmer", label: "Farmer", icon: Sprout, description: "Access crop, weather, and market intelligence" },
