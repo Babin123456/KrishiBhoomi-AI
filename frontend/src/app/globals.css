@@ -456,3 +456,14 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Ensure select options are properly styled in dark/light mode environments */
+select option {
+  background-color: hsl(var(--card));
+  color: hsl(var(--foreground));
+}
+
+.dark select option {
+  background-color: hsl(var(--card));
+  color: hsl(var(--foreground));
+}

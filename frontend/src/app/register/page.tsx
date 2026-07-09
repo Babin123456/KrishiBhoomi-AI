@@ -80,8 +80,8 @@ export default function RegisterPage() {
             <div className="w-20 h-20 rounded-3xl gradient-primary flex items-center justify-center mx-auto mb-8 shadow-2xl shadow-krishi-500/25">
               <Sprout className="w-10 h-10 text-white" />
             </div>
-            <h1 className="text-4xl font-bold text-white mb-4">Join KrishiBhoomi AI</h1>
-            <p className="text-lg text-white/60 max-w-md">
+            <h1 className="text-4xl font-bold text-foreground dark:text-white mb-4">Join KrishiBhoomi AI</h1>
+            <p className="text-lg text-muted-foreground dark:text-white/60 max-w-md">
               Start making smarter farming decisions with AI-powered intelligence today.
             </p>
 
@@ -90,15 +90,15 @@ export default function RegisterPage() {
               {steps.map((s, i) => (
                 <div key={s.id} className="flex items-center gap-3">
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-all ${
-                    step >= s.id ? "gradient-primary text-white" : "glass text-white/40"
+                    step >= s.id ? "gradient-primary text-white" : "glass text-foreground/40 dark:text-white/40"
                   }`}>
                     {s.id}
                   </div>
-                  <span className={`text-sm hidden sm:block ${step >= s.id ? "text-white" : "text-white/40"}`}>
+                  <span className={`text-sm hidden sm:block ${step >= s.id ? "text-foreground dark:text-white" : "text-foreground/45 dark:text-white/40"}`}>
                     {s.title}
                   </span>
                   {i < steps.length - 1 && (
-                    <div className={`w-8 h-px ${step > s.id ? "bg-krishi-500" : "bg-white/20"}`} />
+                    <div className={`w-8 h-px ${step > s.id ? "bg-krishi-500" : "bg-border dark:bg-white/20"}`} />
                   )}
                 </div>
               ))}

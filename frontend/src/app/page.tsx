@@ -15,6 +15,7 @@ import {
   Footer,
   TeamSection,
 } from "@/components/landing";
+import { BackToTop } from "@/components/shared";
 
 export default function LandingPage() {
   return (
@@ -34,6 +35,7 @@ export default function LandingPage() {
       <TeamSection />
       <CTASection />
       <Footer />
+      <BackToTop />
     </main>
   );
 }

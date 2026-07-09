@@ -25,10 +25,7 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { icon: Globe, href: "https://github.com", label: "GitHub" },
-  { icon: Send, href: "https://twitter.com", label: "Twitter" },
-  { icon: ExternalLink, href: "https://linkedin.com", label: "LinkedIn" },
-  { icon: Mail, href: "mailto:contact@krishibhoomi.ai", label: "Email" },
+  { icon: Globe, href: "https://github.com/Babin123456/KrishiBhoomi-AI", label: "Star on GitHub" }
 ];
 
 export function Footer() {

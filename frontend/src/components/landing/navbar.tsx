@@ -10,6 +10,7 @@ import {
   ChevronRight,
   Sun,
   Moon,
+  Globe,
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
@@ -88,6 +89,15 @@ export function Navbar() {
             >
               {mounted && (theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />)}
             </button>
+            <a
+              href="https://github.com/Babin123456/KrishiBhoomi-AI"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl border border-border text-foreground hover:bg-muted/50 transition-colors"
+            >
+              <Globe className="w-3.5 h-3.5" />
+              <span>Star on GitHub</span>
+            </a>
             <Link
               href="/login"
               className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
