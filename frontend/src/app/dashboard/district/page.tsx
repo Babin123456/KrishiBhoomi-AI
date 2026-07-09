@@ -16,10 +16,44 @@ import {
 import { GlassCard } from "@/components/shared";
 
 const hotspots = [
-  { region: "Lucknow Rural", disease: "Leaf Rust (Wheat)", severity: "High", count: 142 },
-  { region: "Sitapur District", disease: "Early Blight (Tomato)", severity: "Medium", count: 85 },
-  { region: "Kanpur Outskirts", disease: "Aphid Infestation", severity: "High", count: 110 },
-  { region: "Hardoi Village Block", disease: "Leaf Rust (Wheat)", severity: "Low", count: 34 },
+  // 28 States
+  { region: "Lucknow, Uttar Pradesh", disease: "Leaf Rust (Wheat)", severity: "High", count: 142 },
+  { region: "Nashik, Maharashtra", disease: "Downy Mildew (Grapes)", severity: "High", count: 198 },
+  { region: "Guntur, Andhra Pradesh", disease: "Black Thrips (Chilli)", severity: "Critical", count: 320 },
+  { region: "Bathinda, Punjab", disease: "Pink Bollworm (Cotton)", severity: "High", count: 245 },
+  { region: "Karnal, Haryana", disease: "Bacterial Leaf Blight (Paddy)", severity: "Medium", count: 110 },
+  { region: "Jorhat, Assam", disease: "Red Rot (Sugarcane)", severity: "Medium", count: 88 },
+  { region: "Muzaffarpur, Bihar", disease: "Leaf Blight (Litchi)", severity: "High", count: 154 },
+  { region: "Raipur, Chhattisgarh", disease: "Brown Plant Hopper (Rice)", severity: "Medium", count: 95 },
+  { region: "Anand, Gujarat", disease: "Leaf Spot (Tobacco)", severity: "Low", count: 42 },
+  { region: "Kangra, Himachal Pradesh", disease: "Powder Mildew (Apple)", severity: "Medium", count: 76 },
+  { region: "Ranchi, Jharkhand", disease: "Early Blight (Potato)", severity: "Low", count: 50 },
+  { region: "Shimoga, Karnataka", disease: "Blast Disease (Paddy)", severity: "High", count: 185 },
+  { region: "Kottayam, Kerala", disease: "Foot Rot (Black Pepper)", severity: "Medium", count: 67 },
+  { region: "Indore, Madhya Pradesh", disease: "Yellow Mosaic (Soybean)", severity: "High", count: 210 },
+  { region: "Imphal, Manipur", disease: "Blast Disease (Rice)", severity: "Low", count: 28 },
+  { region: "Shillong, Meghalaya", disease: "Late Blight (Potato)", severity: "Low", count: 31 },
+  { region: "Aizawl, Mizoram", disease: "Leaf Spot (Ginger)", severity: "Low", count: 15 },
+  { region: "Kohima, Nagaland", disease: "Rust (Soybean)", severity: "Low", count: 20 },
+  { region: "Cuttack, Odisha", disease: "Gall Midge (Rice)", severity: "Medium", count: 112 },
+  { region: "Sri Ganganagar, Rajasthan", disease: "Locust Attack Warning", severity: "Critical", count: 405 },
+  { region: "Gangtok, Sikkim", disease: "Rhizome Rot (Cardamom)", severity: "Medium", count: 58 },
+  { region: "Coimbatore, Tamil Nadu", disease: "Stem Bleeding (Coconut)", severity: "Medium", count: 94 },
+  { region: "Nalgonda, Telangana", disease: "Stem Borer (Paddy)", severity: "High", count: 167 },
+  { region: "Agartala, Tripura", disease: "Leaf Spot (Rice)", severity: "Low", count: 24 },
+  { region: "Dehradun, Uttarakhand", disease: "Powdery Mildew (Pea)", severity: "Low", count: 37 },
+  { region: "Jalpaiguri, West Bengal", disease: "Red Rust (Tea)", severity: "High", count: 180 },
+  { region: "Panaji, Goa", disease: "Bud Rot (Coconut)", severity: "Low", count: 18 },
+  { region: "Naya Raipur, Chhattisgarh", disease: "Stem Borer (Maize)", severity: "Low", count: 39 },
+  // 8 Union Territories
+  { region: "Srinagar, Jammu & Kashmir", disease: "Scab (Apple)", severity: "High", count: 155 },
+  { region: "Leh, Ladakh", disease: "Aphids (Apricot)", severity: "Medium", count: 45 },
+  { region: "Kavaratti, Lakshadweep", disease: "Mite Infestation (Coconut)", severity: "High", count: 70 },
+  { region: "Port Blair, Andaman & Nicobar", disease: "Kanu Rot (Arecanut)", severity: "Medium", count: 52 },
+  { region: "Puducherry Rural", disease: "Blast Disease (Rice)", severity: "Medium", count: 63 },
+  { region: "Daman & Diu Zone", disease: "Fruit Borer (Sapota)", severity: "Low", count: 19 },
+  { region: "Dadra & Nagar Haveli", disease: "Powdery Mildew (Mango)", severity: "Low", count: 25 },
+  { region: "Delhi Outskirts (Narela)", disease: "Bacterial Canker (Vegetables)", severity: "Medium", count: 88 }
 ];
 
 const stressMetrics = [
