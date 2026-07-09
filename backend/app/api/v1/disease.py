@@ -14,6 +14,21 @@ async def detect_disease(
     # Simulated EfficientNet-B0 fine-tuned classifier response enhanced with Gemini explainability
     filename_lower = file.filename.lower()
     
+    # Check if a leaf is actually present in the image based on mock validation criteria
+    if not any(keyword in filename_lower for keyword in ["leaf", "plant", "crop", "wheat", "rust", "tomato", "blight", "disease", "pest", "cotton"]):
+        return {
+            "disease": "No Plant Leaf Detected",
+            "confidence": 0.0,
+            "severity": "N/A",
+            "cause": "The uploaded image does not appear to contain a recognizable crop leaf or plant structure.",
+            "symptoms": [],
+            "organicTreatment": [],
+            "chemicalTreatment": [],
+            "recoveryTime": "N/A",
+            "preventiveMeasures": [],
+            "explanation": "Image analysis failed to identify features matching a leaf. Please upload a clear close-up picture of the affected crop leaf."
+        }
+
     if "wheat" in filename_lower or "rust" in filename_lower:
         disease = "Leaf Rust (Puccinia recondita)"
         confidence = 93.4

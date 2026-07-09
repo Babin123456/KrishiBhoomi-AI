@@ -133,9 +133,17 @@ docker-compose up --build
 
 ---
 
-## ⚙️ Environment Configuration
+## ⚙️ Environment Configuration & Credentials Acquisition
 
-Create a `.env` file in the root directory (or individual `.env` files under `frontend` and `backend` directories) using the following configuration values:
+Create a `.env` file in the root directory (or individual `.env` files under `frontend` and `backend` directories) using the configuration values below.
+
+### 🔑 How to acquire credentials:
+1. **`DATABASE_URL` (PostgreSQL)**: Spin up a local PostgreSQL server, or sign up for a cloud-hosted PostgreSQL instance via platforms like **Supabase**, **Neon**, or **Railway** to obtain your connection URI.
+2. **`GEMINI_API_KEY` (AI Copilot)**: Head to [Google AI Studio](https://aistudio.google.com/), sign in, click **Get API Key**, and generate a free API key.
+3. **`OPENWEATHER_API_KEY` (Weather)**: Register a free account on [OpenWeatherMap](https://openweathermap.org/api) and generate an API key on your profile dashboard.
+4. **`REDIS_URL` (Cache)**: Set up Redis locally, or obtain a cloud endpoint from **Upstash** or **Redis Labs**.
+
+Create the environment file using these keys:
 
 ```env
 # ============================================
