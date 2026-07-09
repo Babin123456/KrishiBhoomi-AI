@@ -140,10 +140,14 @@ docker-compose up --build
 Create a `.env` file in the root directory (or individual `.env` files under `frontend` and `backend` directories) using the configuration values below.
 
 ### 🔑 How to acquire credentials:
-1. **`DATABASE_URL` (PostgreSQL)**: Spin up a local PostgreSQL server, or sign up for a cloud-hosted PostgreSQL instance via platforms like **Supabase**, **Neon**, or **Railway** to obtain your connection URI.
+1. **`DATABASE_URL` (PostgreSQL / SQLite)**: For local testing, you can use SQLite by setting `DATABASE_URL=sqlite+aiosqlite:///./krishibhoomi.db` (does not require external setup). For production, spin up a local PostgreSQL server, or sign up for a cloud-hosted PostgreSQL instance via platforms like **Supabase**, **Neon**, or **Railway** to obtain your connection URI (replace prefix with `postgresql+asyncpg://...`).
 2. **`GEMINI_API_KEY` (AI Copilot)**: Head to [Google AI Studio](https://aistudio.google.com/), sign in, click **Get API Key**, and generate a free API key.
 3. **`OPENWEATHER_API_KEY` (Weather)**: Register a free account on [OpenWeatherMap](https://openweathermap.org/api) and generate an API key on your profile dashboard.
-4. **`REDIS_URL` (Cache)**: Set up Redis locally, or obtain a cloud endpoint from **Upstash** or **Redis Labs**.
+4. **`REDIS_URL` (Cache)**: Set up Redis locally, or obtain a cloud endpoint from **Upstash** or **Redis Labs**. If you don't use caching, setting `REDIS_URL` is optional as the app defaults to in-memory caching.
+5. **`SECRET_KEY` & `JWT_SECRET`**: You can generate these credentials yourself. Run the following python command in your terminal to generate a secure random secret key:
+   ```bash
+   python -c "import secrets; print(secrets.token_hex(32))"
+   ```
 
 Create the environment file using these keys:
 

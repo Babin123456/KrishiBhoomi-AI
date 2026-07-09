@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Sprout, Globe, ExternalLink, Send, Mail } from "lucide-react";
+import { Sprout, Globe, ExternalLink, Send, Mail, Star } from "lucide-react";
 
 const footerLinks = {
   Platform: [
@@ -25,7 +25,7 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { icon: Globe, href: "https://github.com/Babin123456/KrishiBhoomi-AI", label: "Star on GitHub" }
+  { icon: Star, href: "https://github.com/Babin123456/KrishiBhoomi-AI", label: "Star on GitHub" }
 ];
 
 export function Footer() {

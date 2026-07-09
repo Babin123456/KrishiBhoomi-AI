@@ -11,6 +11,7 @@ import {
   Sun,
   Moon,
   Globe,
+  Star,
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
@@ -95,7 +96,7 @@ export function Navbar() {
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl border border-border text-foreground hover:bg-muted/50 transition-colors"
             >
-              <Globe className="w-3.5 h-3.5" />
+              <Star className="w-3.5 h-3.5 fill-current text-yellow-500" />
               <span>Star on GitHub</span>
             </a>
             <Link
