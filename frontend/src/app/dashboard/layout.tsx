@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, ReactNode } from "react";
+import { useState, useEffect, ReactNode } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -43,6 +43,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
   const [collapsed, setCollapsed] = useState(false);
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   
   const [userName] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -50,6 +51,11 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
     }
     return "Babin Bid";
   });
+
+  // Run on mount
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Extract initials dynamically
   const userInitials = userName
@@ -120,8 +126,12 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
           >
-            {theme === "dark" ? <Sun className="w-5 h-5 shrink-0" /> : <Moon className="w-5 h-5 shrink-0" />}
-            {!collapsed && <span>{theme === "dark" ? "Light Mode" : "Dark Mode"}</span>}
+            {mounted ? (
+              theme === "dark" ? <Sun className="w-5 h-5 shrink-0" /> : <Moon className="w-5 h-5 shrink-0" />
+            ) : (
+              <div className="w-5 h-5 shrink-0 rounded-full border border-muted-foreground/30 animate-pulse" />
+            )}
+            {!collapsed && <span>{mounted && theme === "dark" ? "Light Mode" : "Dark Mode"}</span>}
           </button>
           <Link
             href="/login"
