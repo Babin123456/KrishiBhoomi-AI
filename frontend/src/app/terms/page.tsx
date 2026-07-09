@@ -40,7 +40,7 @@ export default function TermsPage() {
           <div className="space-y-4 text-sm text-muted-foreground leading-relaxed">
             <h2 className="text-base font-bold text-foreground mt-4">1. Acceptance of Terms</h2>
             <p>
-              By accessing and using KrishiBhoomi AI ("the Platform"), you agree to be bound by these Terms of Service. If you do not agree, please refrain from using the services.
+              By accessing and using KrishiBhoomi AI (&quot;the Platform&quot;), you agree to be bound by these Terms of Service. If you do not agree, please refrain from using the services.
             </p>
 
             <h2 className="text-base font-bold text-foreground mt-4">2. AI Predictions Disclaimer</h2>

@@ -61,17 +61,24 @@ const recentActivities = [
 const weeklyHealth = [65, 72, 68, 78, 82, 87, 85];
 
 export default function FarmerDashboard() {
-  const [userState, setUserState] = useState("Uttar Pradesh");
-  const [userDistrict, setUserDistrict] = useState("Lucknow");
-  const [userName, setUserName] = useState("Rajesh");
-
-  useEffect(() => {
+  const [userState, setUserState] = useState(() => {
     if (typeof window !== 'undefined') {
-      setUserState(localStorage.getItem("userState") || "Uttar Pradesh");
-      setUserDistrict(localStorage.getItem("userDistrict") || "Lucknow");
-      setUserName(localStorage.getItem("userName") || "Rajesh");
+      return localStorage.getItem("userState") || "Uttar Pradesh";
     }
-  }, []);
+    return "Uttar Pradesh";
+  });
+  const [userDistrict, setUserDistrict] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem("userDistrict") || "Lucknow";
+    }
+    return "Lucknow";
+  });
+  const [userName, setUserName] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem("userName") || "Rajesh";
+    }
+    return "Rajesh";
+  });
 
   // Generate a mock but state-dependent weekly trend calculation to feel realistic
   const stateSeed = userState.charCodeAt(0) + userState.length;

@@ -60,7 +60,7 @@ export default function CopilotPage() {
     if (!text.trim()) return;
 
     const userMessage: Message = {
-      id: Date.now().toString(),
+      id: Math.random().toString(36).substring(7),
       role: "user",
       content: text.trim(),
       timestamp: new Date(),
@@ -74,7 +74,7 @@ export default function CopilotPage() {
 
     const response = mockResponses.default;
     const assistantMessage: Message = {
-      id: (Date.now() + 1).toString(),
+      id: Math.random().toString(36).substring(7),
       role: "assistant",
       content: response.content,
       sources: response.sources,
