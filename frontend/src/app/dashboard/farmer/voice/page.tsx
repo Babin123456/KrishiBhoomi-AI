@@ -35,19 +35,49 @@ export default function VoicePage() {
   const [response, setResponse] = useState<string | null>(null);
 
   const startRecording = () => {
+    if (typeof window === "undefined") return;
+
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      alert("Speech Recognition API is not supported in this browser. Please use Google Chrome/Microsoft Edge.");
+      return;
+    }
+
+    const recognition = new SpeechRecognition();
+    recognition.lang = selectedLang === "hi" ? "hi-IN" : selectedLang === "bn" ? "bn-IN" : selectedLang === "ta" ? "ta-IN" : "en-IN";
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+
     setIsRecording(true);
     setTranscript(null);
     setResponse(null);
-    // Simulate recording timeout
-    setTimeout(() => {
+
+    recognition.start();
+
+    recognition.onresult = async (event: any) => {
+      const speechToText = event.results[0][0].transcript;
       setIsRecording(false);
       setIsLoading(true);
+      setTranscript(speechToText);
+
+      // Connect with translation simulation/agronomy intelligence responses
       setTimeout(() => {
-        setTranscript("गेहूं की फसल में यूरिया कब डालना चाहिए? (When should I apply urea in wheat?)");
-        setResponse("गेहूं की फसल में यूरिया का पहला टॉप ड्रेसिंग बुवाई के 20-25 दिन बाद (CRI स्टेज पर) और दूसरा 40-45 दिन बाद करना चाहिए। प्रति एकड़ 40 किलोग्राम यूरिया का छिड़काव शाम के समय करें जब मिट्टी में हल्की नमी हो। (Urea should be top-dressed 20-25 days after sowing at CRI stage. Apply 40kg per acre.)");
+        let aiAnswer = "I have translated your voice query. Here is the local agronomy advisory. For optimal growth, ensure you apply balanced NPK fertilizers and verify soil moisture card indexes weekly.";
+        if (selectedLang === "hi") {
+          aiAnswer = `मैंने आपकी आवाज़ का अनुवाद कर लिया है। सलाह: गेहूं की फसल के लिए शाम के समय यूरिया (40 किलोग्राम प्रति एकड़) छिड़कें। मिट्टी में नमी का स्तर ${speechToText.includes("पानी") ? "कम है, हल्की सिंचाई की आवश्यकता है" : "पर्याप्त है"}।`;
+        } else if (selectedLang === "bn") {
+          aiAnswer = `আপনার ভয়েস কুয়েরি অনুবাদ করা হয়েছে। উপদেশ: বিঘা প্রতি জমিতে উপযুক্ত ইউরিয়া প্রয়োগ ও হালকা সেচের ব্যবস্থা করুন।`;
+        }
+        setResponse(aiAnswer);
         setIsLoading(false);
       }, 1500);
-    }, 3000);
+    };
+
+    recognition.onerror = (event: any) => {
+      console.error("Speech recognition error:", event.error);
+      setIsRecording(false);
+      alert("Microphone detection failed. Please allow microphone permissions in your browser settings.");
+    };
   };
 
   return (

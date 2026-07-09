@@ -212,7 +212,34 @@ export default function CopilotPage() {
           <div className="flex items-center gap-2">
             <button
               type="button"
-              className="p-2.5 rounded-xl hover:bg-muted/50 text-muted-foreground transition-colors"
+              onClick={() => {
+                if (typeof window !== "undefined") {
+                  const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+                  if (!SpeechRecognition) {
+                    alert("Speech Recognition API is not supported in this browser. Please use Chrome/Edge.");
+                    return;
+                  }
+                  const recognition = new SpeechRecognition();
+                  recognition.lang = "en-IN";
+                  recognition.interimResults = false;
+                  recognition.maxAlternatives = 1;
+                  
+                  setInput("Listening...");
+                  recognition.start();
+
+                  recognition.onresult = (event: any) => {
+                    const speechToText = event.results[0][0].transcript;
+                    setInput(speechToText);
+                  };
+
+                  recognition.onerror = (event: any) => {
+                    console.error("Speech recognition error:", event.error);
+                    setInput("");
+                    alert("Voice detection failed. Please check microphone permissions.");
+                  };
+                }
+              }}
+              className="p-2.5 rounded-xl hover:bg-muted/50 text-muted-foreground hover:text-purple-500 transition-colors"
               aria-label="Voice input"
             >
               <Mic className="w-5 h-5" />
