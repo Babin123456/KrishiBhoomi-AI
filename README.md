@@ -130,3 +130,71 @@ docker-compose up --build
    ```
 
 4. Open your browser and navigate to `http://localhost:3000` 🌐.
+
+---
+
+## ⚙️ Environment Configuration
+
+Create a `.env` file in the root directory (or individual `.env` files under `frontend` and `backend` directories) using the following configuration values:
+
+```env
+# ============================================
+# KrishiBhoomi AI - Environment Configuration
+# ============================================
+
+# Frontend
+NEXT_PUBLIC_API_URL=http://localhost:8000
+NEXT_PUBLIC_APP_NAME=KrishiBhoomi AI
+
+# Backend
+SECRET_KEY=your-secret-key-change-in-production
+DATABASE_URL=postgresql+asyncpg://postgres:postgres@localhost:5432/krishibhoomi
+REDIS_URL=redis://localhost:6379/0
+
+# JWT
+JWT_SECRET=your-jwt-secret-change-in-production
+JWT_ALGORITHM=HS256
+JWT_EXPIRATION_MINUTES=1440
+
+# Google Gemini
+GEMINI_API_KEY=your-gemini-api-key
+
+# OpenWeather
+OPENWEATHER_API_KEY=your-openweather-api-key
+
+# File Storage
+UPLOAD_DIR=./uploads
+MAX_UPLOAD_SIZE_MB=10
+
+# CORS
+CORS_ORIGINS=http://localhost:3000,http://localhost:3001
+```
+
+---
+
+## ⚡ Vercel Deployment (Monorepo)
+
+Vercel natively supports Next.js alongside Python serverless functions, enabling both the frontend and FastAPI backend to be deployed under the same repository mapping:
+
+### 1. Vercel Configuration Mapping
+The root [`vercel.json`](vercel.json) file handles routing and service separation.
+- Requests matching `/api/backend/*` route directly to the serverless Python backend service directory.
+- All other routes resolve to the Next.js frontend application.
+
+### 2. Deployment Steps
+1. Push the entire workspace repository to your GitHub account:
+   ```bash
+   git add .
+   git commit -m "prepping vercel monorepo"
+   git push origin main
+   ```
+2. Navigate to your [Vercel Dashboard](https://vercel.com/dashboard) and click **Add New Project**.
+3. Select your `KrishiBhoomi-AI` repository.
+4. On the configuration page, verify that the project roots are managed dynamically by the `vercel.json` file.
+5. In **Build & Development Settings**, configure:
+   - **Build Command**: Toggle the **Override** switch and leave the input field **empty**.
+   - **Install Command**: Toggle the **Override** switch and leave the input field **empty**.
+   - **Output Directory**: Toggle the **Override** switch and leave the input field **empty**.
+6. Expand the **Environment Variables** panel and add the configuration fields listed in the **Environment Configuration** section above.
+7. Click **Deploy**. Vercel will build both services in parallel and host them under a unified domain.
+
