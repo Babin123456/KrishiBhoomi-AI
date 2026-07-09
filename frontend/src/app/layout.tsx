@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, DM_Sans, JetBrains_Mono } from "next/font/google";
 import { Providers } from "@/components/providers";
+import { PageLoader } from "@/components/shared/page-loader";
 import "./globals.css";
 
 const inter = Inter({
@@ -76,7 +77,10 @@ export default function RootLayout({
       className={`${inter.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}
     >
       <body className="min-h-screen bg-background font-sans antialiased">
-        <Providers>{children}</Providers>
+        <Providers>
+          <PageLoader />
+          {children}
+        </Providers>
       </body>
     </html>
   );

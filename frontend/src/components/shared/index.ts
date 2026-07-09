@@ -4,3 +4,4 @@ export { GradientText } from "./gradient-text";
 export { SectionWrapper, SectionHeader } from "./section-wrapper";
 export { ScrollReveal, StaggerContainer, StaggerItem } from "./scroll-reveal";
 export { BackToTop } from "./back-to-top";
+export { PageLoader } from "./page-loader";
