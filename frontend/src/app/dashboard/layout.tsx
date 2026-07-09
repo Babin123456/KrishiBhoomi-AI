@@ -43,6 +43,21 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
   const [collapsed, setCollapsed] = useState(false);
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
+  
+  const [userName] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem("userName") || "Babin Bid";
+    }
+    return "Babin Bid";
+  });
+
+  // Extract initials dynamically
+  const userInitials = userName
+    .split(" ")
+    .map((namePart) => namePart.charAt(0))
+    .join("")
+    .substring(0, 2)
+    .toUpperCase();
 
   return (
     <div className="flex h-screen bg-background overflow-hidden">
@@ -144,8 +159,8 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
               <Bell className="w-5 h-5" />
               <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-krishi-500 rounded-full" />
             </button>
-            <div className="w-8 h-8 rounded-full gradient-primary flex items-center justify-center text-white text-xs font-bold">
-              RK
+             <div className="w-8 h-8 rounded-full gradient-primary flex items-center justify-center text-white text-xs font-bold">
+              {userInitials}
             </div>
           </div>
         </header>
