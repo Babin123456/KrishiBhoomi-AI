@@ -19,8 +19,8 @@ const footerLinks = {
   Company: [
     { label: "Project Home", href: "/" },
     { label: "Get Started", href: "/register" },
-    { label: "Privacy Policy", href: "/privacy.md" },
-    { label: "Terms of Service", href: "/terms.md" },
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Terms of Service", href: "/terms" },
   ],
 };
 

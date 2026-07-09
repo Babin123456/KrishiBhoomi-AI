@@ -10,6 +10,8 @@ KrishiBhoomi AI is a premium, production-quality AI-powered agricultural intelli
 ## 📖 Key Reference Documents
 
 - **🛠️ [Local Setup & Working Principles Guide](INSTRUCTIONS.md)**: Steps to launch the FastAPI backend, DB triggers, and Next.js frontend pages.
+- **🖥️ [Frontend Service Docs](frontend/README.md)**: Next.js frontend dashboard application guidelines.
+- **⚙️ [Backend Service Docs](backend/README.md)**: FastAPI REST API Gateway configs and setup files.
 - **🗺️ [System Architecture & Flow Mapper](ARCHITECTURE.md)**: Visual sequence graphs and Mermaid high-level stack diagrams.
 - **📄 [MIT License](LICENSE)**: Standard open distribution permissions guidelines.
 
