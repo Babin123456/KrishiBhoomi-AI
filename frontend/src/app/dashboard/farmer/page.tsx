@@ -79,8 +79,13 @@ export default function FarmerDashboard() {
     return "Rajesh";
   });
 
-  // Generate a mock but state-dependent weekly trend calculation to feel realistic
+  // State-dependent weather generator to represent different climates across Indian states
   const stateSeed = userState.charCodeAt(0) + userState.length;
+  const derivedTemp = 24 + (stateSeed % 14); // Range: 24 - 37 degrees
+  const derivedHumidity = 45 + (stateSeed % 36); // Range: 45% - 80%
+  const derivedWind = 5 + (stateSeed % 16); // Range: 5 - 20 km/h
+  const derivedRainChance = (stateSeed * 7) % 100; // Range: 0% - 99%
+
   const stateWeeklyHealth = [
     60 + (stateSeed % 15),
     65 + (stateSeed % 12),
@@ -170,15 +175,15 @@ export default function FarmerDashboard() {
             </Link>
           </div>
           <div className="text-center mb-4">
-            <p className="text-4xl font-bold text-foreground">{weatherData.temp}<span className="text-xl">°C</span></p>
-            <p className="text-sm text-muted-foreground">{weatherData.condition}</p>
+            <p className="text-4xl font-bold text-foreground">{derivedTemp}<span className="text-xl">°C</span></p>
+            <p className="text-sm text-muted-foreground">{derivedRainChance > 60 ? "Rainy" : derivedRainChance > 30 ? "Partly Cloudy" : "Clear Sunny"}</p>
           </div>
           <div className="grid grid-cols-2 gap-3">
             {[
-              { icon: Droplets, label: "Humidity", value: `${weatherData.humidity}%` },
-              { icon: Wind, label: "Wind", value: `${weatherData.wind} km/h` },
-              { icon: Gauge, label: "Rain", value: `${weatherData.rainChance}%` },
-              { icon: ThermometerSun, label: "UV Index", value: `${weatherData.uvIndex}` },
+              { icon: Droplets, label: "Humidity", value: `${derivedHumidity}%` },
+              { icon: Wind, label: "Wind", value: `${derivedWind} km/h` },
+              { icon: Gauge, label: "Rain", value: `${derivedRainChance}%` },
+              { icon: ThermometerSun, label: "UV Index", value: `${derivedTemp > 33 ? 9 : 6}` },
             ].map((item) => (
               <div key={item.label} className="flex items-center gap-2 p-2 rounded-lg bg-muted/50">
                 <item.icon className="w-4 h-4 text-muted-foreground" />
