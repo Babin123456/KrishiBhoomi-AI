@@ -105,10 +105,10 @@ export default function LoginPage() {
             <div className="w-20 h-20 rounded-3xl gradient-primary flex items-center justify-center mx-auto mb-8 shadow-2xl shadow-krishi-500/25">
               <Sprout className="w-10 h-10 text-white" />
             </div>
-            <h1 className="text-4xl font-bold text-white mb-4">
+            <h1 className="text-4xl font-bold text-foreground dark:text-white mb-4">
               Krishi<span className="gradient-text">Bhoomi</span> AI
             </h1>
-            <p className="text-lg text-white/60 max-w-md">
+            <p className="text-lg text-muted-foreground dark:text-white/60 max-w-md">
               One Intelligent Platform for Every Farmer. Access AI-powered agricultural intelligence.
             </p>
           </motion.div>
