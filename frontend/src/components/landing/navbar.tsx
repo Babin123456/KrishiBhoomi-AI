@@ -51,7 +51,18 @@ export function Navbar() {
       >
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group" aria-label="KrishiBhoomi AI Home">
+          <Link
+            href="/"
+            onClick={(e) => {
+              // If on home page, scroll to top smoothly
+              if (window.location.pathname === "/") {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
+            className="flex items-center gap-2.5 group"
+            aria-label="KrishiBhoomi AI Home"
+          >
             <div className="relative">
               <div className="w-9 h-9 rounded-xl gradient-primary flex items-center justify-center shadow-lg group-hover:shadow-krishi-500/30 transition-shadow duration-300">
                 <Sprout className="w-5 h-5 text-white" />

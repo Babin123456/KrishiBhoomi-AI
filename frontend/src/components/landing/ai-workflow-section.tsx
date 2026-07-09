@@ -96,7 +96,7 @@ export function AIWorkflowSection() {
       <div ref={ref} className="relative max-w-lg mx-auto">
         {/* Connecting line */}
         <motion.div
-          className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-sky-500 via-krishi-500 to-krishi-600"
+          className="absolute left-8 top-8 bottom-8 w-px bg-gradient-to-b from-sky-500 via-krishi-500 to-krishi-600 -z-10"
           initial={{ scaleY: 0 }}
           animate={isInView ? { scaleY: 1 } : { scaleY: 0 }}
           transition={{ duration: 1.5, ease: "easeInOut" }}

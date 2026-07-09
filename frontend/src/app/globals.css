@@ -459,11 +459,11 @@ body {
 
 /* Ensure select options are properly styled in dark/light mode environments */
 select option {
-  background-color: hsl(var(--card));
-  color: hsl(var(--foreground));
+  background-color: #ffffff;
+  color: #1a1a1a;
 }
 
 .dark select option {
-  background-color: hsl(var(--card));
-  color: hsl(var(--foreground));
+  background-color: #121814;
+  color: #f5f5f5;
 }
