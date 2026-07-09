@@ -7,8 +7,10 @@ import Image from "next/image";
 export function PageLoader() {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     // Animate progress bar
     const progressInterval = setInterval(() => {
       setProgress((prev) => {
@@ -31,6 +33,8 @@ export function PageLoader() {
     };
   }, []);
 
+  if (!mounted) return null;
+
   return (
     <AnimatePresence>
       {loading && (
@@ -52,11 +56,11 @@ export function PageLoader() {
                 key={i}
                 className="absolute rounded-full"
                 style={{
-                  width: `${Math.random() * 6 + 2}px`,
-                  height: `${Math.random() * 6 + 2}px`,
-                  background: `rgba(${i % 3 === 0 ? "34,197,94" : i % 3 === 1 ? "16,185,129" : "74,222,128"},${Math.random() * 0.5 + 0.2})`,
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
+                  width: `${(i % 3 + 1) * 2}px`,
+                  height: `${(i % 3 + 1) * 2}px`,
+                  background: `rgba(${i % 3 === 0 ? "34,197,94" : i % 3 === 1 ? "16,185,129" : "74,222,128"}, 0.4)`,
+                  left: `${(i * 17) % 100}%`,
+                  top: `${(i * 23) % 100}%`,
                 }}
                 animate={{
                   y: [0, -30, 0],
@@ -64,9 +68,9 @@ export function PageLoader() {
                   scale: [1, 1.5, 1],
                 }}
                 transition={{
-                  duration: Math.random() * 2 + 1.5,
+                  duration: 2.5,
                   repeat: Infinity,
-                  delay: Math.random() * 1.5,
+                  delay: i * 0.1,
                   ease: "easeInOut",
                 }}
               />
@@ -96,6 +100,7 @@ export function PageLoader() {
                   src="/KB-AI.png"
                   alt="KrishiBhoomi AI Logo"
                   fill
+                  sizes="96px"
                   className="object-cover"
                   priority
                 />
