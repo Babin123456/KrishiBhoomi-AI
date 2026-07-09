@@ -2,12 +2,12 @@
 
 import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import {
   Microscope,
   Upload,
   ImagePlus,
   Zap,
-  AlertTriangle,
   CheckCircle2,
   Loader2,
   Leaf,
@@ -18,6 +18,7 @@ import {
   X,
 } from "lucide-react";
 import { GlassCard } from "@/components/shared";
+
 
 interface DiseaseResult {
   disease: string;
@@ -164,7 +165,14 @@ export default function DiseaseDetectionPage() {
             >
               {image ? (
                 <div className="relative">
-                  <img src={image} alt="Uploaded crop" className="max-h-64 mx-auto rounded-xl object-cover" />
+                  <div className="relative w-full h-64">
+                    <Image
+                      src={image}
+                      alt="Uploaded crop"
+                      fill
+                      className="rounded-xl object-contain"
+                    />
+                  </div>
                   <button
                     onClick={() => { setImage(null); setResult(null); }}
                     className="absolute top-2 right-2 w-8 h-8 rounded-full bg-background/80 backdrop-blur flex items-center justify-center hover:bg-danger-500/10 transition-colors"
