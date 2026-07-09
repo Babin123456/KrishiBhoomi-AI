@@ -62,6 +62,12 @@ export default function RegisterPage() {
       return;
     }
 
+    // Validate passwords match
+    if (formData.password !== formData.confirmPassword) {
+      alert("Passwords do not match. Please verify.");
+      return;
+    }
+
     setIsLoading(true);
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/api/v1/auth/register`, {
@@ -100,7 +106,28 @@ export default function RegisterPage() {
     } catch (err: any) {
       console.warn("Backend unreachable, falling back to local registration mode:", err);
       
-      // Fallback for offline registration (uses provided user details)
+      // Prevent duplicate registrations in offline mock mode
+      const registeredUsers = JSON.parse(localStorage.getItem("registeredUsers") || "[]");
+      const userExists = registeredUsers.some((u: any) => u.email === formData.email);
+      if (userExists) {
+        alert("A user with this email address already exists. Please Sign In.");
+        router.push("/login");
+        setIsLoading(false);
+        return;
+      }
+
+      // Save user locally to mock registry database
+      registeredUsers.push({
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+        phone: formData.phone,
+        language: formData.language,
+        location: formData.location
+      });
+      localStorage.setItem("registeredUsers", JSON.stringify(registeredUsers));
+
+      // Log the user in
       localStorage.setItem("token", "mock-registered-token");
       localStorage.setItem("userName", formData.name || "Farmer Rajesh");
       localStorage.setItem("userRole", "farmer");

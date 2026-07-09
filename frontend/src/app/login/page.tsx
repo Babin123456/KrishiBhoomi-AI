@@ -64,7 +64,24 @@ export default function LoginPage() {
     } catch (err: any) {
       console.error(err);
       // Fallback for offline demo accounts
-      if (email === "farmer@demo.com" && password === "demo123") {
+      // Fallback for offline demo and newly registered accounts
+      const registeredUsers = JSON.parse(localStorage.getItem("registeredUsers") || "[]");
+      const foundUser = registeredUsers.find((u: any) => u.email === email && u.password === password);
+
+      if (foundUser) {
+        localStorage.setItem("token", "mock-registered-token");
+        localStorage.setItem("userName", foundUser.name);
+        localStorage.setItem("userRole", "farmer");
+        localStorage.setItem("userLanguage", foundUser.language || "English");
+
+        const locParts = (foundUser.location || "Lucknow, Uttar Pradesh").split(",").map((p: any) => p.trim());
+        const district = locParts[1] || locParts[0] || "Lucknow";
+        const state = locParts[2] || locParts[1] || "Uttar Pradesh";
+
+        localStorage.setItem("userDistrict", district);
+        localStorage.setItem("userState", state);
+        router.push("/dashboard/farmer");
+      } else if (email === "farmer@demo.com" && password === "demo123") {
         localStorage.setItem("token", "mock-farmer-token");
         localStorage.setItem("userName", "Rajesh Kumar");
         localStorage.setItem("userRole", "farmer");
@@ -81,7 +98,7 @@ export default function LoginPage() {
         localStorage.setItem("userLanguage", "English");
         router.push("/dashboard/district");
       } else {
-        alert(err.message || "Invalid email or password");
+        alert("Incorrect email or password.");
       }
     } finally {
       setIsLoading(false);
