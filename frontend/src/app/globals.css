@@ -3,7 +3,7 @@
    Premium Agricultural Intelligence Platform
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@300;400;500;700&family=Lora:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 @import "tailwindcss";
 
@@ -60,8 +60,8 @@
   --color-warm-600: #ea580c;
 
   /* Fonts */
-  --font-sans: 'Comic Sans MS', 'Cambria Math', 'Chalkboard SE', cursive, sans-serif;
-  --font-display: 'Cambria Math', 'Comic Sans MS', serif;
+  --font-sans: 'Comic Sans MS', 'Playpen Sans', 'Chalkboard SE', cursive, sans-serif;
+  --font-display: 'Cambria Math', 'Cambria', 'Lora', serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
   /* Animations */

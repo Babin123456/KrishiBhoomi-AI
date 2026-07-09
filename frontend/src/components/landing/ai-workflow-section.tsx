@@ -96,7 +96,7 @@ export function AIWorkflowSection() {
       <div ref={ref} className="relative max-w-lg mx-auto">
         {/* Connecting line */}
         <motion.div
-          className="absolute left-8 top-8 bottom-8 w-px bg-gradient-to-b from-sky-500 via-krishi-500 to-krishi-600 -z-10"
+          className="absolute left-8 top-8 bottom-8 w-px bg-gradient-to-b from-sky-500 via-krishi-500 to-krishi-600 z-0"
           initial={{ scaleY: 0 }}
           animate={isInView ? { scaleY: 1 } : { scaleY: 0 }}
           transition={{ duration: 1.5, ease: "easeInOut" }}
@@ -104,7 +104,7 @@ export function AIWorkflowSection() {
         />
 
         {/* Steps */}
-        <div className="space-y-3">
+        <div className="space-y-3 relative z-10">
           {steps.map((step, index) => (
             <motion.div
               key={step.label}
@@ -118,7 +118,7 @@ export function AIWorkflowSection() {
               className="relative flex items-center gap-5 group"
             >
               {/* Node */}
-              <div className={`relative z-10 w-16 h-16 rounded-2xl ${step.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 shrink-0`}>
+              <div className={`relative z-20 w-16 h-16 rounded-2xl ${step.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 shrink-0`}>
                 <step.icon className="w-7 h-7 text-white" />
               </div>
 
