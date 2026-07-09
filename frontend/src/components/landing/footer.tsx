@@ -11,16 +11,16 @@ const footerLinks = {
     { label: "FAQ", href: "#faq" },
   ],
   Resources: [
-    { label: "Documentation", href: "https://github.com/Babin123456/KrishiBhoomi-AI" },
-    { label: "API Docs Swagger", href: "http://localhost:8000/docs" },
-    { label: "Knowledge Base", href: "#features" },
+    { label: "Code Repository Docs", href: "https://github.com/Babin123456/KrishiBhoomi-AI" },
+    { label: "Local Setup Guide", href: "https://github.com/Babin123456/KrishiBhoomi-AI/blob/main/INSTRUCTIONS.md" },
+    { label: "System Architecture", href: "https://github.com/Babin123456/KrishiBhoomi-AI/blob/main/ARCHITECTURE.md" },
     { label: "Farmer Portal", href: "/login" },
   ],
   Company: [
     { label: "Project Home", href: "/" },
     { label: "Get Started", href: "/register" },
-    { label: "Admin Portal", href: "/login" },
-    { label: "Terms of Service", href: "#faq" },
+    { label: "Privacy Policy", href: "/privacy.md" },
+    { label: "Terms of Service", href: "/terms.md" },
   ],
 };
 
