@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   CloudSun,
@@ -58,22 +58,21 @@ const recentActivities = [
   { action: "Irrigation scheduled", detail: "Field A — Tomorrow 6:00 AM", time: "8h ago" },
 ];
 
-const weeklyHealth = [65, 72, 68, 78, 82, 87, 85];
 
 export default function FarmerDashboard() {
-  const [userState, setUserState] = useState(() => {
+  const [userState] = useState(() => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem("userState") || "Uttar Pradesh";
     }
     return "Uttar Pradesh";
   });
-  const [userDistrict, setUserDistrict] = useState(() => {
+  const [userDistrict] = useState(() => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem("userDistrict") || "Lucknow";
     }
     return "Lucknow";
   });
-  const [userName, setUserName] = useState(() => {
+  const [userName] = useState(() => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem("userName") || "Rajesh";
     }

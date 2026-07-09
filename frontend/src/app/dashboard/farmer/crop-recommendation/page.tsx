@@ -6,20 +6,16 @@ import {
   Wheat,
   Sprout,
   Droplets,
-  ThermometerSun,
   Zap,
   AlertTriangle,
   TrendingUp,
   BarChart3,
-  CheckCircle2,
   Loader2,
-  ChevronRight,
   Info,
   Beaker,
-  CloudRain,
-  Layers,
 } from "lucide-react";
-import { GlassCard, GradientText } from "@/components/shared";
+import { GlassCard } from "@/components/shared";
+
 
 const soilTypes = ["Alluvial", "Black (Regur)", "Red", "Laterite", "Clay", "Sandy", "Loamy"];
 

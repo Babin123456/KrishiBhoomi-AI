@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+
 import {
   CloudSun,
   ThermometerSun,
@@ -44,7 +44,8 @@ const advisories = [
 ];
 
 export default function WeatherPage() {
-  const [activeTab, setActiveTab] = useState<"hourly" | "weekly">("weekly");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_activeTab, _setActiveTab] = useState<"hourly" | "weekly">("weekly");
 
   return (
     <div className="max-w-6xl mx-auto space-y-6">

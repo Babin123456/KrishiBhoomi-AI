@@ -15,14 +15,12 @@ import {
   TrendingUp,
   MessageSquare,
   Bell,
-  Settings,
   LogOut,
   Menu,
   X,
   Sun,
   Moon,
   ChevronLeft,
-  User,
   Wheat,
 } from "lucide-react";
 import { useTheme } from "next-themes";

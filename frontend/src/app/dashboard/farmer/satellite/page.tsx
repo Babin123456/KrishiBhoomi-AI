@@ -3,13 +3,13 @@
 import { useState } from "react";
 import {
   Satellite,
-  Info,
   Calendar,
   Layers,
   Sparkles,
   TrendingUp,
 } from "lucide-react";
 import { GlassCard } from "@/components/shared";
+
 
 const satelliteMetrics = [
   { label: "NDVI Index", value: "0.72", status: "Healthy Vegetation", color: "text-krishi-500" },

@@ -3,10 +3,8 @@
 import { useState } from "react";
 import {
   MapPin,
-  Calendar,
   Layers,
   Sparkles,
-  TrendingUp,
   AlertTriangle,
   Users,
   Sprout,
@@ -14,6 +12,7 @@ import {
   Microscope,
 } from "lucide-react";
 import { GlassCard } from "@/components/shared";
+
 
 const hotspots = [
   // 28 States

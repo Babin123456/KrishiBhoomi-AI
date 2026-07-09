@@ -6,11 +6,9 @@ import {
   MapPin,
   Calendar,
   Sparkles,
-  Info,
-  ChevronRight,
-  TrendingDown,
 } from "lucide-react";
 import { GlassCard } from "@/components/shared";
+
 
 const mandiPrices = [
   { name: "Lucknow Mandi", price: 2450, distance: "12 km", status: "Premium price" },

@@ -7,11 +7,11 @@ import {
   MicOff,
   Volume2,
   Sparkles,
-  RefreshCw,
   Globe,
   Loader2,
 } from "lucide-react";
 import { GlassCard } from "@/components/shared";
+
 
 const languages = [
   { name: "English", code: "en" },
