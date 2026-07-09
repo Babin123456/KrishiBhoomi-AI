@@ -61,12 +61,19 @@ export default function LoginPage() {
       } else {
         router.push("/dashboard/farmer");
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error(err);
       // Fallback for offline demo accounts
       // Fallback for offline demo and newly registered accounts
-      const registeredUsers = JSON.parse(localStorage.getItem("registeredUsers") || "[]");
-      const foundUser = registeredUsers.find((u: any) => u.email === email && u.password === password);
+      interface OfflineUser {
+        name: string;
+        email: string;
+        password?: string;
+        location?: string;
+        language?: string;
+      }
+      const registeredUsers: OfflineUser[] = JSON.parse(localStorage.getItem("registeredUsers") || "[]");
+      const foundUser = registeredUsers.find((u) => u.email === email && u.password === password);
 
       if (foundUser) {
         localStorage.setItem("token", "mock-registered-token");
@@ -74,7 +81,7 @@ export default function LoginPage() {
         localStorage.setItem("userRole", "farmer");
         localStorage.setItem("userLanguage", foundUser.language || "English");
 
-        const locParts = (foundUser.location || "Lucknow, Uttar Pradesh").split(",").map((p: any) => p.trim());
+        const locParts = (foundUser.location || "Lucknow, Uttar Pradesh").split(",").map((p) => p.trim());
         const district = locParts[1] || locParts[0] || "Lucknow";
         const state = locParts[2] || locParts[1] || "Uttar Pradesh";
 

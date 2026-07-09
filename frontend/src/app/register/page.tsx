@@ -103,12 +103,20 @@ export default function RegisterPage() {
       localStorage.setItem("userState", state);
 
       router.push("/dashboard/farmer");
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.warn("Backend unreachable, falling back to local registration mode:", err);
       
       // Prevent duplicate registrations in offline mock mode
-      const registeredUsers = JSON.parse(localStorage.getItem("registeredUsers") || "[]");
-      const userExists = registeredUsers.some((u: any) => u.email === formData.email);
+      interface OfflineUser {
+        name: string;
+        email: string;
+        password?: string;
+        phone?: string;
+        location?: string;
+        language?: string;
+      }
+      const registeredUsers: OfflineUser[] = JSON.parse(localStorage.getItem("registeredUsers") || "[]");
+      const userExists = registeredUsers.some((u) => u.email === formData.email);
       if (userExists) {
         alert("A user with this email address already exists. Please Sign In.");
         router.push("/login");

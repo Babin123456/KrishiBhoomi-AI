@@ -32,9 +32,7 @@ const summaryCards = [
   { title: "Market Price", value: 2450, unit: "/q", icon: TrendingUp, trend: "+Rs 120", trendUp: true, color: "text-earth-600", bgColor: "bg-earth-500/10" },
 ];
 
-const weatherData = {
-  temp: 32, humidity: 65, wind: 12, rainChance: 15, uvIndex: 7, condition: "Partly Cloudy",
-};
+
 
 const alerts = [
   { type: "warning", title: "Heavy Rain Alert", message: "Expected tomorrow morning — delay fertilizer application", time: "2h ago", icon: CloudSun },
