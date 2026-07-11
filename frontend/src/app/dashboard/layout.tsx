@@ -54,7 +54,8 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
 
   // Run on mount
   useEffect(() => {
-    setMounted(true);
+    const timer = setTimeout(() => setMounted(true), 0);
+    return () => clearTimeout(timer);
   }, []);
 
   // Extract initials dynamically
