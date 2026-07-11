@@ -214,7 +214,18 @@ export default function CopilotPage() {
               type="button"
               onClick={() => {
                 if (typeof window !== "undefined") {
-                  const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+                  type SpeechRecognitionEvent = { results: { transcript: string }[][] };
+                  type SpeechRecognitionErrorEvent = { error: string };
+                  type SpeechRecognitionConstructor = new () => {
+                      lang: string;
+                      interimResults: boolean;
+                      maxAlternatives: number;
+                      start: () => void;
+                      onresult: ((event: SpeechRecognitionEvent) => void) | null;
+                      onerror: ((event: SpeechRecognitionErrorEvent) => void) | null;
+                  };
+                  const Win = window as unknown as { SpeechRecognition: SpeechRecognitionConstructor; webkitSpeechRecognition: SpeechRecognitionConstructor };
+                  const SpeechRecognition = Win.SpeechRecognition || Win.webkitSpeechRecognition;
                   if (!SpeechRecognition) {
                     alert("Speech Recognition API is not supported in this browser. Please use Chrome/Edge.");
                     return;
@@ -227,12 +238,12 @@ export default function CopilotPage() {
                   setInput("Listening...");
                   recognition.start();
 
-                  recognition.onresult = (event: any) => {
+                  recognition.onresult = (event: SpeechRecognitionEvent) => {
                     const speechToText = event.results[0][0].transcript;
                     setInput(speechToText);
                   };
 
-                  recognition.onerror = (event: any) => {
+                  recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
                     console.error("Speech recognition error:", event.error);
                     setInput("");
                     alert("Voice detection failed. Please check microphone permissions.");

@@ -37,7 +37,18 @@ export default function VoicePage() {
   const startRecording = () => {
     if (typeof window === "undefined") return;
 
-    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    type SpeechRecognitionEvent = { results: { transcript: string }[][] };
+    type SpeechRecognitionErrorEvent = { error: string };
+    type SpeechRecognitionConstructor = new () => {
+        lang: string;
+        interimResults: boolean;
+        maxAlternatives: number;
+        start: () => void;
+        onresult: ((event: SpeechRecognitionEvent) => void) | null;
+        onerror: ((event: SpeechRecognitionErrorEvent) => void) | null;
+    };
+    const Win = window as unknown as { SpeechRecognition: SpeechRecognitionConstructor; webkitSpeechRecognition: SpeechRecognitionConstructor };
+    const SpeechRecognition = Win.SpeechRecognition || Win.webkitSpeechRecognition;
     if (!SpeechRecognition) {
       alert("Speech Recognition API is not supported in this browser. Please use Google Chrome/Microsoft Edge.");
       return;
@@ -54,7 +65,7 @@ export default function VoicePage() {
 
     recognition.start();
 
-    recognition.onresult = async (event: any) => {
+    recognition.onresult = async (event: SpeechRecognitionEvent) => {
       const speechToText = event.results[0][0].transcript;
       setIsRecording(false);
       setIsLoading(true);
@@ -73,7 +84,7 @@ export default function VoicePage() {
       }, 1500);
     };
 
-    recognition.onerror = (event: any) => {
+    recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
       console.error("Speech recognition error:", event.error);
       setIsRecording(false);
       alert("Microphone detection failed. Please allow microphone permissions in your browser settings.");
