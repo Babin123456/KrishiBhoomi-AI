@@ -226,3 +226,5 @@ The root [`vercel.json`](vercel.json) file handles routing and service separatio
 6. Expand the **Environment Variables** panel and add the configuration fields listed in the **Environment Configuration** section above.
 
 7. Click **Deploy**. Vercel will build both services in parallel and host them under a unified domain.
+
+---
